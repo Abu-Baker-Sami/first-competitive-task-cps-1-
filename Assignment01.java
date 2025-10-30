@@ -4,7 +4,7 @@ class Solution {
         int curA = 0;
         int maxA = 0;
 
-        for (int i = 0; i < height.length; i++) {
+        for (int i = 0; i < height.length-1; i++) {
             for (int j = i + 1; j < height.length; j++) {
                 if (height[i] >= height[j]) {
                     curA = height[j] * (j-i);
