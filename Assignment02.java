@@ -5,8 +5,13 @@ public class Assignment02{
         list.addLast(40);
         System.out.println(list);
         list.removeFirst();
+        list.addLast(82);
         System.out.println(list);
+        list.addLast(45);
         list.addLast(602);
+        //list.head=list.reverselist(list.head);
+        System.out.println(list);
+        list.removeKthNodeFromLast(2);
         System.out.println(list);
     }
 }
@@ -75,11 +80,54 @@ class LinkedList{
     }
   }
   //C_END-------------------------
-  //D_START-----------------------
+  
+  //D_START-----------------NEED HELP!------
+  public node reverselist(node head){
+    if(head==null|| head.next==null){
+      return null;
+    }
+   // else{
+      node n= reverselist(head.next);
+        head.next.next= head;
+        head.next=null;
+        
+        return null;
+      //}
+  }
+  //D_END????????????????
+  
+  //E_START-------------sir er tai modify korsi :)
+  public node removeKthNodeFromLast(int k){
+        node tempSlow = head;
+        node tempFast = head;
+        node temprem;
+        if(head==null){
+            throw new IllegalStateException();
+        }
+        
+        for (int i =0; i<k-1; i++) {
+            tempFast = tempFast.next;
+            if(tempFast==null){
+                throw new IllegalArgumentException();
+            }
+        }
+        
+    System.out.println();
+        while(tempFast.next != null) {
+          ///  temprem=tempSlow;
+            tempSlow = tempSlow.next;
+            tempFast = tempFast.next;
+            
+        }
+    System.out.println("Removing the "+k+"th Node from Last: "+ tempSlow.data);
+    tempSlow.next=tempSlow.next.next;
+    return tempSlow.next;
+  }
+  
+  //E_END------------------
   
   
-  
-  //override
+  //override--from class
       public String toString() {
         StringBuilder sb = new StringBuilder();
         node temp = head;
@@ -92,5 +140,4 @@ class LinkedList{
         }
         return sb.toString();
     }
-
 }
